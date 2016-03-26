@@ -20,7 +20,7 @@ struct node{
 	int data;
 	struct node *right;
 };
-void inorderfun(struct node *root, int *arr, int *index)
+void inorderfun(struct node *root,int *ind, int *arr)
 {
 
 	if (!root)
@@ -29,10 +29,10 @@ void inorderfun(struct node *root, int *arr, int *index)
 	}
 	else
 	{
-		inorderfun(root->left, arr, index);
-		arr[*index] = root->data;
-		(*index)++;
-		inorderfun(root->right, arr, index);
+		inorderfun(root->left, arr, ind);
+		arr[*ind] = root->data;
+		(*ind)++;
+		inorderfun(root->right, arr, ind);
 	}
 }
 
@@ -43,7 +43,7 @@ void inorder(struct node *root, int *arr){
 	else
 		return;
 }
-void preorderfun(struct node *root, int *arr, int *index)
+void preorderfun(struct node *root, int *ind, int *arr)
 {
 	if (!root)
 	{
@@ -51,10 +51,10 @@ void preorderfun(struct node *root, int *arr, int *index)
 	}
 	else
 	{
-		arr[*index] = root->data;
-		(*index)++;
-		preorderfun(root->left, arr, index);
-		preorderfun(root->right, arr, index);
+		arr[*ind] = root->data;
+		(*ind)++;
+		preorderfun(root->left, arr, ind);
+		preorderfun(root->right, arr, ind);
 	}
 }
 void preorder(struct node *root, int *arr){
@@ -64,17 +64,17 @@ void preorder(struct node *root, int *arr){
 	else
 		return;
 }
-void postorderfun(struct node *root, int *arr, int *index)
+void postorderfun(struct node *root, int *ind, int *arr)
 {
 
 	if (!root)
 		return;
 	else
 	{
-		postorderfun(root->left, arr, index);
-		postorderfun(root->right, arr, index);
-		arr[*index] = root->data;
-		(*index)++;
+		postorderfun(root->left, arr, ind);
+		postorderfun(root->right, arr, ind);
+		arr[*ind] = root->data;
+		(*ind)++;
 	}
 }
 void postorder(struct node *root, int *arr){
