@@ -100,9 +100,9 @@ namespace spec
 								{1,3,2}
 			};
 			int results[3][3];
-			inorder(root, &results[0][0]);
-			preorder(root, &results[1][0]);
-			postorder(root, &results[2][0]);
+			inorder(root, results[0]);
+			preorder(root, results[1]);
+			postorder(root, results[2]);
 
 			for (int i = 0; i < 3; i++){
 				for (int j = 0; j < elements; j++){
