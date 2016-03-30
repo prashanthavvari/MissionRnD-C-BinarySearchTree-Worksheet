@@ -40,17 +40,54 @@ struct node{
 	struct node *right;
 };
 
-
+void inorders(node *head, int *x)
+{
+	if (head != NULL)
+	{
+		inorders(head->left, x);
+		(*x) = (*x) + head->data;
+		inorders(head->right, x);
+	}
+}
+int height(node* head)
+{
+	if (head == NULL)
+		return 0;
+	else
+	{
+		int left = height(head->left);
+		int right = height(head->right);
+		if (left > right)
+			return(left + 1);
+		else return(right + 1);
+	}
+}
 int get_height(struct node *root){
-
-	return 0;
+	int x = 0;
+	x=height(root);
+	return x;
 }
 
 int get_left_subtree_sum(struct node *root){
-	return 0;
+	int x = 0;
+	if (root != NULL)
+	{
+		node *p = root->left;
+		inorders(p, &x);
+		return x;
+	}
+	else
+		return 0;
 }
-
 int get_right_subtree_sum(struct node *root){
-	return 0;
+	int x = 0;
+	if (root != NULL)
+	{
+		node *p = root->right;
+		inorders(p, &x);
+		return x;
+	}
+	else
+		return 0;
 }
 
